@@ -4,6 +4,6 @@ WORKDIR /srv
 ADD requirements.txt /srv/
 RUN pip install -r requirements.txt
 
-ADD scrapyd.conf /srv
+COPY scrapyd.conf /etc/scrapyd/scrapyd.conf
 
-CMD ["scrapyd"]
+CMD ["/bin/sh", "-c", "rm -Rf twistd.pid && scrapyd"]
